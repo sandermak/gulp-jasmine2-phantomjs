@@ -1,11 +1,13 @@
 gulp-jasmine2-phantomjs
 =======================
 
-Use this plugin to run HTML spec files with Jasmine 2.0 specs. The plugin shows success/failure counts on the console. Specs will be run using PhantomJS.
+Use this plugin to run HTML spec files with Jasmine 2.0 specs. Currently, you must use this plugin in conjuction with the JUnitXmlReporter in [jasmine2-junit](https://github.com/sandermak/jasmine2-junit). This reporter generates JUnit XML reports to be used in a CI build. 
+
+The plugin shows success/failure counts on the console. Specs will be run using PhantomJS.
 
 Usage
 -----
-In order to setup gulp-jasmine2-phantomjs, require the plugin and use ```gulp.src``` to pipe spec files into it:
+In order to setup gulp-jasmine2-phantomjs, require the plugin and use ```gulp.src``` to pipe html spec files (see readme of https://github.com/sandermak/jasmine2-junit for a correct setup of html files) into it:
 
 ```
 var jasminePhantomJs = require('gulp-jasmine2-phantomjs');
@@ -16,4 +18,3 @@ gulp.task('test', function() {
 });
 ```
 
-You can use this plugin in conjuction with [jasmine2-junit](https://github.com/sandermak/jasmine2-junit) to generate JUnit XML reports in a CI build.
