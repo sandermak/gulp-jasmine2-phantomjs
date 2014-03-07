@@ -1,0 +1,35 @@
+{
+  "name": "gulp-jasmine2-phantomjs",
+  "description": "Run Jasmine tests with PhantomJS",
+  "version": "0.0.1",
+  "homepage": "http://github.com/sandermak/gulp-jasmine2-phantomjs",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sandermak/gulp-jasmine2-phantomjs.git"
+  },
+  "author": {
+    "name": "Sander Mak",
+    "email": "sandermak@gmail.com",
+    "url": "http://branchandbound.net/"
+  },
+  "main": "./index.js",
+  "keywords": ["gulpplugin", "test", "jasmine", "phantomjs"],
+  "dependencies": {
+    "gulp-util": "~2.2.5",
+    "phantomjs": "~1.9.7-1",
+     "through2": "~0.4.0"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/sandermak/gulp-jasmine2-phantomjs/issues"
+  }
+}
