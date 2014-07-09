@@ -122,7 +122,9 @@ function setupWriteFileFunction(page, key, path_separator) {
         window.__phantom_writeFile = function(filename, text) {
             window["%resultsObj%"][filename] = text;
         };
-    }, {resultsObj: key, fs_path_separator: path_separator});
+    }, 
+    /* See https://github.com/larrymyers/jasmine-reporters/issues/28 */
+    {resultsObj: key, fs_path_separator: path_separator.replace("\\", "\\\\")});
 }
 
 /**
