@@ -9,10 +9,19 @@ var binPath = phantomjs.path;
 
 module.exports = function(){
     return through.obj(function (file, enc, cb) {
+        var filepath = file.path
+        var isWindows = /^win/.test(process.platform);
         
+        // Horrible workaround since Windows-style paths ('c:\foo\bar') seem to break PhantomJS
+        if(isWindows) {
+           var mangledpath = file.path.split(path.sep)
+           mangledpath[0] = ''
+           filepath = mangledpath.join('/') 
+        }
+
         var childArgs = [
             path.join(__dirname, 'jasmine2-runner.js'),
-            file.path
+            filepath
         ];
 
         if (file.isNull()) {
