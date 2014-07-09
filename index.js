@@ -32,7 +32,7 @@ module.exports = function(){
             }
 
             if (err !== null) {
-                gutil.log('gulp-jasmine2-phantomjs: ' + gutil.colors.red("✖ ") + 'Assertions failed in ' + gutil.colors.blue(file.relative));
+                gutil.log('gulp-jasmine2-phantomjs: ' + gutil.colors.red("\u2716 ") + 'Assertions failed in ' + gutil.colors.blue(file.relative));
                 this.emit('error', new gutil.PluginError('gulp-jasmine2-phantomjs', err));
             }
 
