@@ -1,7 +1,7 @@
 {
   "name": "gulp-jasmine2-phantomjs",
   "description": "Run Jasmine tests with PhantomJS",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "homepage": "http://github.com/sandermak/gulp-jasmine2-phantomjs",
   "repository": {
     "type": "git",

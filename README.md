@@ -18,3 +18,16 @@ gulp.task('test', function() {
 });
 ```
 
+If you want to pass additional arguments to PhantomJS, pass them as parameter to the plugin:
+
+```
+gulp.src(specFiles).pipe(jasminePhantomJs(['--web-security=false', '--load-images=false']));
+```
+
+Alternatively, if you just want to pass a single argument, you can use
+
+```
+gulp.src(specFiles).pipe(jasminePhantomJs('--web-security=false'));
+```
+
+An overview of available PhantomJS arguments can found here: http://phantomjs.org/api/command-line.html
