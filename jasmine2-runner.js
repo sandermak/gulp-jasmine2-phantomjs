@@ -50,8 +50,9 @@ else {
                 return;
             }
             exit_code |= page.__exit_code;
+            page.close();
         }
-        phantom.exit(exit_code);
+        setTimeout(function() { phantom.exit(exit_code); }, 0);
     }, 100);
 }
 
