@@ -170,9 +170,18 @@ function processPage(status, page, resultsKey) {
         };
         var getResults = function() {
             return page.evaluate(function(){
-                return document.getElementsByClassName("bar").length &&
-                       document.getElementsByClassName("bar")[0].innerHTML.match(/(\d+) spec.* (\d+) failure.*/) ||
-                       ["Unable to determine success or failure."];
+                var bar = document.getElementsByClassName("bar");
+                if(!bar.length){
+                    return ["Unable to determine success or failure."];
+                }
+                var regex = /(\d+) spec.* (\d+) failure.*/;
+                if(bar.length > 1){
+                    console.log("you may have some pending tests!", bar[0].innerHTML);
+                    return bar[1].innerHTML.match(regex);
+                }
+                else{
+                    return bar[0].innerHTML.match(regex);
+                }                
             });
         };
         var timeout = 30000;
