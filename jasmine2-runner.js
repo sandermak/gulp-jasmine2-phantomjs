@@ -170,18 +170,22 @@ function processPage(status, page, resultsKey) {
         };
         var getResults = function() {
             return page.evaluate(function(){
-                var bar = document.getElementsByClassName("bar");
-                if(!bar.length){
-                    return ["Unable to determine success or failure."];
-                }
+
+                var passed = document.getElementsByClassName("bar passed");
+                var failed = document.getElementsByClassName("bar failed");
+                var pending = document.getElementsByClassName("bar skipped");
+
                 var regex = /(\d+) spec.* (\d+) failure.*/;
-                if(bar.length > 1){
-                    console.log("you may have some pending tests!", bar[0].innerHTML);
-                    return bar[1].innerHTML.match(regex);
+                if(pending.length > 0){
+                    console.log("you have some pending tests! ", pending[0].innerHTML);
                 }
-                else{
-                    return bar[0].innerHTML.match(regex);
-                }                
+                if(failed.length > 0){
+                    return failed[0].innerHTML.match(regex);
+                }
+                if(passed.length > 0){
+                    return passed[0].innerHTML.match(regex);
+                }
+                return ["Unable to determine success or failure."];
             });
         };
         var timeout = 30000;
