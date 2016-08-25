@@ -56,6 +56,7 @@ module.exports = function(phantomArgs){
             }
 
             this.push(file);
+            this.emit('end');
 
             return cb();
         }.bind(this));
