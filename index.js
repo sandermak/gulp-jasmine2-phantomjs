@@ -4,19 +4,19 @@ var path = require('path');
 var childProcess = require('child_process');
 var gutil = require('gulp-util');
 var through = require('through2');
-var phantomjs = require('phantomjs');
+var phantomjs = require('phantomjs-prebuilt');
 var binPath = phantomjs.path;
 
 module.exports = function(phantomArgs){
     return through.obj(function (file, enc, cb) {
         var filepath = file.path
         var isWindows = /^win/.test(process.platform);
-        
+
         // Horrible workaround since Windows-style paths ('c:\foo\bar') seem to break PhantomJS
         if(isWindows) {
            var mangledpath = file.path.split(path.sep)
            mangledpath[0] = ''
-           filepath = mangledpath.join('/') 
+           filepath = mangledpath.join('/')
         }
 
         var childArgs = [
