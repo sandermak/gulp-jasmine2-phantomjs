@@ -1,6 +1,8 @@
-/* globals jasmine, phantom */
+var system = require('system')
+
+/* globals jasmine */
 // Verify arguments
-if (phantom.args.length === 0) {
+if (system.args.length < 2) {
     console.log("Simple JasmineBDD test runner for phantom.js");
     console.log("Usage: phantomjs-testrunner.js url_to_runner.html");
     console.log("Accepts http:// and file:// urls");
@@ -9,7 +11,7 @@ if (phantom.args.length === 0) {
     phantom.exit(2);
 }
 else {
-    var args = phantom.args;
+    var args = system.args.slice(1);
     var fs = require("fs"),
         pages = [],
         page, address, resultsKey, i, l;
@@ -123,7 +125,7 @@ function setupWriteFileFunction(page, key, path_separator) {
         window.__phantom_writeFile = function(filename, text) {
             window["%resultsObj%"][filename] = text;
         };
-    }, 
+    },
     /* See https://github.com/larrymyers/jasmine-reporters/issues/28 */
     {resultsObj: key, fs_path_separator: path_separator.replace("\\", "\\\\")});
 }
